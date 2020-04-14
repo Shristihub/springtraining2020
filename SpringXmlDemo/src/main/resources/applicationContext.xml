@@ -2,10 +2,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<bean id="employee" class="com.shristi.basics.Employee">
-		<property name="name" value="Raju"></property>
+		<property name="name" value="Ram"></property>
 		<property name="empId" value="10"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+	<bean id="address" class="com.shristi.basics.Address">
+		<property name="city" value="Bangalore"></property>
+		<property name="zipcode" value="290100"></property>
+	</bean>
+
+	<bean id="employee1" class="com.shristi.basics.Employee">
+		<property name="name" value="Lucky"></property>
+		<property name="empId" value="20"></property>
+		<property name="address">
+			<bean class="com.shristi.basics.Address">
+				<property name="city" value="Chennai"></property>
+			</bean>
+		</property>
+
 	</bean>
 
 </beans>
