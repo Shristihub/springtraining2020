@@ -19,6 +19,7 @@ public class Main {
 		for (String beanName : beans) {
 			System.out.println(beanName);
 		}
+		
 	}
 
 }

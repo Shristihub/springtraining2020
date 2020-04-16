@@ -9,11 +9,11 @@ public class Client {
 	public static void main(String[] args) {
 
 		ApplicationContext context = 
-				new AnnotationConfigApplicationContext("com.shristi") ;
+				new AnnotationConfigApplicationContext("com.shristi.basics") ;
 				//new ClassPathXmlApplicationContext("applicationContext.xml");
-		
-		Employee employee = context.getBean(Employee.class);
-		System.out.println("Employee-1: "+employee);
+//		
+//		Employee employee = context.getBean(Employee.class);
+//		System.out.println("Employee-1: "+employee);
 //		System.out.println("Employee-1: "+employee.getAddress().getCity());
 //		Address address = context.getBean(Address.class);
 //		address.setCity("Pune");
