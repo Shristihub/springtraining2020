@@ -1,6 +1,9 @@
 package com.bookapp.service;
 
+import java.util.ArrayList;
+import java.util.Collections;import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,19 +23,48 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public List<Book> getAllBooks() {
-		return null;
+		List<Book> bookList = bookDAO.getAllBooks();
+		System.out.println("......"+bookList);
+		List<Book> newBookList = new ArrayList<Book>();
+		for(Book book:bookList) {
+			if(book.getPrice()<1000)
+				newBookList.add(book);
+		}
+		Collections.sort(newBookList,new Comparator<Book>() {
+
+			@Override
+			public int compare(Book book1, Book book2) {
+				return book1.getAuthor().compareTo(book2.getAuthor());
+			}
+		
+		});
+		return newBookList;
+		/*if(bookList == null) {
+			throw new BookNotFoundException();
+		}
+		return bookList
+				.stream()
+				.filter(book->book.getPrice()>1000)
+				.sorted((book1,book2)->	book1.getAuthor().compareTo(book2.getAuthor()))
+				.collect(Collectors.toList());*/
 	}
 
 	@Override
 	public List<Book> getBookByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<Book> bookList = bookDAO.getBookByCategory(category);
+		/*if(bookList == null) {
+			throw new BookNotFoundException();
+		}*/
+		return bookList
+				.stream()
+				.sorted((book1,book2)->	book1.getAuthor().compareTo(book2.getAuthor()))
+				.filter((book)->book.getPrice()>1000)
+				.limit(2)
+				.collect(Collectors.toList());	}
 
 	@Override
 	public Book getBookById(int bookid) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDAO.getBookById(bookid);
 	}
 
 	@Override

@@ -21,14 +21,18 @@ public class BookController {
 	public void addBook(Book book) {
 		
 	}
+	@GetMapping("/books")
 	public List<Book> getAllBooks(){
-		return null;
+		return bookService.getAllBooks();
 	}
-	public List<Book>  getBookByCategory(String category){
-		return null;
+	@GetMapping("/books-by-category/{category}")
+	public List<Book>  getBookByCategory(@PathVariable("category")String category){
+		
+		return bookService.getBookByCategory(category);
 	}
-	public Book getBookById(int bookid) {
-		return null;
+	@GetMapping("/book-by-id/{bookid}")
+	public Book getBookById(@PathVariable("bookid")int bookid) {
+		return bookService.getBookById(bookid);
 	}
 	public void updateBook(Book book) {}
 	

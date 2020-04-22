@@ -1,9 +1,12 @@
 package com.bookapp.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.bookapp.bean.Book;
@@ -23,20 +26,58 @@ public class BookDAOImpl implements BookDAO {
 
 	@Override
 	public List<Book> getAllBooks() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select * from book";
+		List<Book> bookList = jdbcTemplate.query(query, new RowMapper<Book>() {
+
+			@Override
+			public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Book book  = new Book();
+				String title = rs.getString("title");
+				book.setTitle(title);
+				book.setBookid(rs.getInt("bookid"));
+				book.setAuthor(rs.getString("author"));
+				book.setCategory(rs.getString("category"));
+				book.setPrice(rs.getInt("price"));
+				return book;
+			}
+			
+		});
+		return bookList;
 	}
 
 	@Override
 	public List<Book> getBookByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select * from book where category=?";
+		List<Book> bookList = jdbcTemplate.query(query,new Object[] {category},
+			(rs, rowNum) -> {
+				Book book  = new Book();
+				String title = rs.getString("title");
+				book.setTitle(title);
+				book.setBookid(rs.getInt("bookid"));
+				book.setAuthor(rs.getString("author"));
+				book.setCategory(rs.getString("category"));
+				book.setPrice(rs.getInt("price"));
+				return book;
+			});
+		return bookList;
+
 	}
 
 	@Override
 	public Book getBookById(int bookid) {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "select * from book where bookid=?";
+		 Book newBook = jdbcTemplate.queryForObject(query, new Object[] {bookid},
+			(rs, rowNum) -> {
+				Book book  = new Book();
+				String title = rs.getString("title");
+				book.setTitle(title);
+				book.setBookid(rs.getInt("bookid"));
+				book.setAuthor(rs.getString("author"));
+				book.setCategory(rs.getString("category"));
+				book.setPrice(rs.getInt("price"));
+				return book;
+			});
+		return newBook;
 	}
 
 	@Override
