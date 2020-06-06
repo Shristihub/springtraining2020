@@ -33,15 +33,15 @@ public class SpringHotelappRestapiApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Address address = new Address("JP nagar","Bangalore",537890,"KAR");
-		Menu menu1 = new Menu("Idli", 20);
-		Menu menu2 = new Menu("Dosa", 20);
-		Set<Menu> menuList = new HashSet<>(Arrays.asList(menu1,menu2));
-		Delivery del1 = deliveryService.getDeliveryByPartner("uber");
-		Set<Delivery> deliveryList = new HashSet<>(Arrays.asList(del1));
-		Hotel hotel = new Hotel("The Shanthos",address,menuList,deliveryList);
-		//hotelService.addHotel(hotel);
-		
+//		Address address = new Address("JP nagar","Bangalore",537890,"KAR");
+//		Menu menu1 = new Menu("Idli", 20);
+//		Menu menu2 = new Menu("Dosa", 20);
+//		Set<Menu> menuList = new HashSet<>(Arrays.asList(menu1,menu2));
+//		Delivery del1 = deliveryService.getDeliveryByPartner("uber");
+//		Set<Delivery> deliveryList = new HashSet<>(Arrays.asList(del1));
+//		Hotel hotel = new Hotel("The Shanthos",address,menuList,deliveryList);
+//		//hotelService.addHotel(hotel);
+//		
 //		Hotel hotel = hotelService.getHotelById(202);
 //		System.out.println(hotel);
 //		hotel.getAddress().setCity("Karwar");
@@ -56,7 +56,7 @@ public class SpringHotelappRestapiApplication implements CommandLineRunner{
 //		hotelService.getHotelsByLocation("JP nagar")
 //		.stream()
 //		.forEach((h)->System.out.println(h.getHotelName()+h.getMenuList()));
-		
+		  
 //		hotelService.getHotelsByMenu("Idli")
 //					.stream()
 //					.forEach((h)->System.out.println(h.getHotelName()+" "+h.getAddress().getStreetName() ));
@@ -64,13 +64,13 @@ public class SpringHotelappRestapiApplication implements CommandLineRunner{
 //		hotelService.getHotelsByDelivery("swiggy")
 //		.stream()
 //		.forEach((h)->System.out.println(h.getHotelName()+" "+h.getAddress().getStreetName() ));
-		
-//		hotelService.getHotelsByLocationAndMenu("JP nagar", "Idli")
+//		
+//		hotelService.getHotelsByLocationAndMenu("JP nagar", "Dosa")
 //				.forEach((h)->System.out.println(h.getHotelName()+" "+h.getAddress().getCity() ));
 //		
-		
-		menuService.getMenusByHotel("A2B")
-			.forEach((m)->System.out.println(m.getMenuName()+" "+m.getPrice()));
+//		
+//		menuService.getMenusByHotel("The Truffles")
+//			.forEach((m)->System.out.println(m.getMenuName()+" "+m.getPrice()));
 	}
 
 	

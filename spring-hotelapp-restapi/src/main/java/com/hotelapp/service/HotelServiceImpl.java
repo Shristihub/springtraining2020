@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hotelapp.models.Hotel;
 import com.hotelapp.repository.HotelRepository;
+import com.hotelapp.repository.MenuRepository;
 
 @Service
 public class HotelServiceImpl implements HotelService {
@@ -14,8 +15,8 @@ public class HotelServiceImpl implements HotelService {
 	@Autowired
 	HotelRepository hotelRepository;
 	@Override
-	public void addHotel(Hotel hotel) {
-		hotelRepository.save(hotel);
+	public Hotel addHotel(Hotel hotel) {
+		return hotelRepository.save(hotel);
 	}
 
 	@Override
