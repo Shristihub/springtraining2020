@@ -27,9 +27,9 @@ public class Menu {
 	private Integer menuId;
 	private String menuName;
 	private double price;
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="hotel_id")
+	@JsonIgnore
 	private Hotel hotel;
 	public Menu(String menuName, double price) {
 		super();
