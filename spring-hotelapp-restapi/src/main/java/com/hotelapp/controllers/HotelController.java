@@ -48,7 +48,7 @@ public class HotelController {
 		return ResponseEntity.ok().build();
 	}
 	@GetMapping("/hotels/hotels-by-city/{city}")
-	public ResponseEntity<List<Hotel>> getHotelsByCity(@PathVariable("cityName") String city){
+	public ResponseEntity<List<Hotel>> getHotelsByCity(@PathVariable("city") String city){
 		List<Hotel> hotelList = hotelService.getHotelsByCity(city);
 		return ResponseEntity.ok().body(hotelList);
 		

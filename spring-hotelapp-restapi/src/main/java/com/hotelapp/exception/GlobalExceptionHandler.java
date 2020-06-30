@@ -81,5 +81,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
 	}
 	
-	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<Object> handleAll(Exception ex){
+		String message = ex.getMessage();
+		List<String> details = new ArrayList<>();
+		details.add("Other exception");
+		details.add(ex.getMessage());
+		ApiErrors errors = new ApiErrors(message,details,HttpStatus.NOT_FOUND,LocalDateTime.now());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
+	}
 }

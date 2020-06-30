@@ -36,6 +36,9 @@ public class HotelServiceImpl implements HotelService {
 
 	@Override
 	public void deleteHotel(int hotelId) {
+		if(hotelId<=0) {
+			throw new RuntimeException("Id should be greater than zero");
+		}
 		hotelRepository.deleteById(hotelId);
 	}
 
